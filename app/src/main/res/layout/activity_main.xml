@@ -9,19 +9,42 @@
     tools:context="com.example.zhang.progressbar.MainActivity">
 
 
-    <ProgressBar
+   <!-- <ProgressBar
         android:layout_marginTop="10dp"
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp" />-->
+
+
+    <com.yanzhikai.pictureprogressbar.PictureProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:drawable="@drawable/test_shape"
+        app:max="1000"
+        app:isSetBar="true"
+        app:progressHeight="10dp"
+        app:animMode="ANIM_FRAME"
+        app:rotateRate="30"
+        app:drawableHeightOffset="0dp"
+        app:progressHeightOffset="15dp"
+        app:scaleMax="1.8"
+        app:scaleMin="0.5"
+        app:scaleRate="0.1"
+        app:refreshTime="100"
+        app:isGradient="true"
+        app:gradientStartColor="#ff0000"
+        app:gradientEndColor="#ffff00"
+        />
 
     <Button
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="haha"/>
 
     <ImageView
@@ -30,5 +53,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
+
 
 </LinearLayout>
