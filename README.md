@@ -2,8 +2,8 @@
 okhttp与progressbar
 
 PictureProgressBar 的使用
-这是一个可在进度条的当前进度点设置图片的ProgressBar，并且可以设置几种动画模式，效果如图：
-使用
+
+
 Gradle
 
     compile 'com.yanzhikaijky:PictureProgressbar:1.1.0'
@@ -11,9 +11,13 @@ Gradle
 属性
 属性名称 	意义 	类型 	默认值
 backGroundColor 	进度条背景颜色 	color 	#888888
+
 barColor 	进度条颜色 	color 	#ff0000
+
 drawable 	进度条图片drawable 	drawable 	null
+
 halfDrawableWidth 	drawable宽度 	dimension 	0
+
 halfDrawableHeight 	drawable高度 	dimension 	0
 drawableHeightOffset 	drawable高度偏移量 	dimension 	0
 isRound 	进度条是否为圆角 	boolean 	true
