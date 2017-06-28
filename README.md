@@ -2,6 +2,7 @@
 okhttp与progressbar
 
 PictureProgressBar 的使用
+![](http://i.imgur.com/076zTuA.gif)
 
 
 Gradle
