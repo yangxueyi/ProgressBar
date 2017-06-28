@@ -2,35 +2,31 @@ package com.example.zhang.progressbar;
 
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * Created by Zhang on 2017/6/27.
+ * Created by Zhang
+ * Time 2017/6/27.
  */
 
-public class DownloadUtil {
+class DownloadUtil {
     private static DownloadUtil downloadUtil;
     private final OkHttpClient okHttpClient;
     private final String simpleDateFormat;
 
-    public static DownloadUtil get() {
+    static DownloadUtil get() {
         if (downloadUtil == null) {
             downloadUtil = new DownloadUtil();
         }
@@ -48,17 +44,17 @@ public class DownloadUtil {
      * @param saveDir 储存下载文件的SDCard目录
      * @param listener 下载监听
      */
-    public void download(final String url, final String saveDir, final OnDownloadListener listener) {
+     void download(final String url, final String saveDir, final OnDownloadListener listener) {
 
         Request request = new Request.Builder().url(url).get().build();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 // 下载失败
                 listener.onDownloadFailed();
             }
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 InputStream is = null;
                 byte[] buf = new byte[2048];
                 int len = 0;
@@ -90,11 +86,13 @@ public class DownloadUtil {
                         if (is != null)
                             is.close();
                     } catch (IOException e) {
+                        e.printStackTrace();
                     }
                     try {
                         if (fos != null)
                             fos.close();
                     } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
             }
@@ -108,16 +106,14 @@ public class DownloadUtil {
      * @throws IOException
      * 判断下载目录是否存在
      */
-    public String isExistDir(String saveDir) throws IOException {
+    private String isExistDir(String saveDir) throws IOException {
         // 下载位置
         File downloadFile = new File(Environment.getExternalStorageDirectory(), saveDir);
 
         if (!downloadFile.mkdirs()) {
             downloadFile.createNewFile();
         }
-        String savePath = downloadFile.getAbsolutePath();
-
-        return savePath;
+        return downloadFile.getAbsolutePath();
     }
 
     /**
