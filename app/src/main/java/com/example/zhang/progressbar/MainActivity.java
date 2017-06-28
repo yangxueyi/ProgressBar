@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                DownloadUtil.get().download(url, new DownloadUtil.OnDownloadListener() {
+                DownloadUtil.get().download(url,"progressbar", new DownloadUtil.OnDownloadListener() {
 
                     @Override
                     public void onDownloadSuccess(final String filePath) throws IOException {
