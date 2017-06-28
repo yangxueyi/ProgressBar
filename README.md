@@ -8,7 +8,7 @@ Gradle
 
     compile 'com.yanzhikaijky:PictureProgressbar:1.1.0'
     
-    ![Image text]（C:\Users\Zhang\Desktop\111.png）
+    ![Image text]（http://img5.imgtn.bdimg.com/it/u=2969570885,333754512&fm=26&gp=0.jpg）
 
 属性
 
