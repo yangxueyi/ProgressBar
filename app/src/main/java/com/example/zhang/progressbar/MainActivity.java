@@ -1,10 +1,8 @@
 package com.example.zhang.progressbar;
 
-import android.os.Environment;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,10 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         iv = (ImageView) findViewById(R.id.iv);
         btn = (Button) findViewById(R.id.btn);
+
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                DownloadUtil.get().download(url, "progressbar", new DownloadUtil.OnDownloadListener() {
+                DownloadUtil.get().download(url, new DownloadUtil.OnDownloadListener() {
 
                     @Override
                     public void onDownloadSuccess(final String filePath) throws IOException {
