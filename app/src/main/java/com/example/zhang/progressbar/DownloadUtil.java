@@ -2,6 +2,7 @@ package com.example.zhang.progressbar;
 
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -63,7 +64,6 @@ import okhttp3.Response;
                 try {
                     is =  response.body().byteStream();
                     long total = response.body().contentLength();
-//                    Log.e("onResponse: ",getNameFromUrl(url));
                     File file = new File(savePath, simpleDateFormat+".jpg");
                     fos = new FileOutputStream(file.getPath());
                     long sum = 0;

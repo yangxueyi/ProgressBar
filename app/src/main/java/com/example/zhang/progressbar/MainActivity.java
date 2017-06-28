@@ -10,29 +10,35 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.yanzhikai.pictureprogressbar.PictureProgressBar;
 
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ProgressBar progressBar;
     private ImageView iv;
     private Button btn;
+    private PictureProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = (PictureProgressBar) findViewById(R.id.progressBar);
+        //设置动画效果
+        progressBar.setDrawableIds(new int[]{R.drawable.i00,R.drawable.i01,R.drawable.i02,R.drawable.i03,R.drawable.i04,R.drawable.i05,R.drawable.i06});
+        //设置progressbar最大值
+        progressBar.setMax(100);
+
         iv = (ImageView) findViewById(R.id.iv);
         btn = (Button) findViewById(R.id.btn);
-
 
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                progressBar.setAnimRun(true);
                 initListener();
             }
         });
@@ -47,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 DownloadUtil.get().download(url,"progressbar" ,new DownloadUtil.OnDownloadListener() {
-
                     @Override
                     public void onDownloadSuccess(final String filePath) throws IOException {
-
+                        //下载结束后，停止动画
+                        progressBar.setAnimRun(false);
                         //下载完成显示到imageview上面
                         runOnUiThread(new Runnable() {
                             @Override
@@ -60,12 +66,9 @@ public class MainActivity extends AppCompatActivity {
                                         .into(iv);
                             }
                         });
-
                         Looper.prepare();
                         Toast.makeText(MainActivity.this, "下载完成", Toast.LENGTH_LONG).show();
                         Looper.loop();
-
-
                     }
 
                     @Override
